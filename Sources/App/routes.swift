@@ -1,5 +1,6 @@
 import Routing
 import Vapor
+import Foundation
 
 /// Register your application's routes here.
 ///
@@ -19,6 +20,13 @@ final class Routes: RouteCollection {
     func boot(router: Router) throws {
         router.get("hello") { req in
             return "Hello, world!"
+        }
+
+        router.post("jot") { req -> String in
+            let bodyData = req.body.data!
+            let bodyString = String(data: bodyData, encoding: .utf8)!
+            print(bodyString)
+            return "Jot received!"
         }
     }
 }
