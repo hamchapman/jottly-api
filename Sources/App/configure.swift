@@ -9,5 +9,5 @@ public func configure(
     _ services: inout Services
 ) throws {
     // configure your application here
-
+    services.use(EngineServerConfig.heroku())
 }
